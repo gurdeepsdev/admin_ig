@@ -4,14 +4,14 @@ export default function AdminDashboard() {
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5200/api/campaign-status")
+    fetch("http://localhost:5000/api/campaign-status")
       .then((res) => res.json())
       .then((data) => setIsLive(data.live));
   }, []);
 
   const toggleCampaign = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5200/api/toggle-campaign", {
+    const res = await fetch("http://localhost:5000/api/toggle-campaign", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
